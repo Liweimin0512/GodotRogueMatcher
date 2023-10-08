@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dij52hrxv40e8"]
+
+[ext_resource type="Script" path="res://src/entities/ChessPiece.gd" id="1_5vn5g"]
+[ext_resource type="Texture2D" uid="uid://b5jev3xbk355m" path="res://assets/texture/animals/bear.png" id="1_65phh"]
+
+[node name="ChessPiece" type="Node2D"]
+script = ExtResource("1_5vn5g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(25, 25)
+scale = Vector2(0.246914, 0.285714)
+texture = ExtResource("1_65phh")
