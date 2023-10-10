@@ -7,11 +7,11 @@
 script = ExtResource("1_y87x1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 3.0
-offset_top = 1.0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 1149.0
+offset_bottom = 647.0
+mouse_filter = 1
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Board" type="Node2D" parent="."]
 position = Vector2(352, 155)
