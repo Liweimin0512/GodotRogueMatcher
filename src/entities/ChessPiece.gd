@@ -4,11 +4,11 @@ class_name ChessPiece
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 var animals : Array = [
-	preload("res://assets/texture/animals/bear.png"), 
 	preload("res://assets/texture/animals/buffalo.png"), 
 	preload("res://assets/texture/animals/chick.png"), 
 	preload("res://assets/texture/animals/chicken.png"), 
-	preload("res://assets/texture/animals/cow.png")
+	preload("res://assets/texture/animals/cow.png"),
+	preload("res://assets/texture/animals/crocodile.png"),
 ]
 
 var piece_type: int = 0 : # -1代表空的网格
@@ -37,5 +37,5 @@ func deselected() -> void:
 ## 移动动画效果
 func move_to(target_cell: Cell) -> void:
 	var tween : Tween = create_tween()
-	tween.tween_property(self, 'position', target_cell.position, 0.2)
+	tween.tween_property(self, 'position', target_cell.position, 0.05)
 	await tween.finished

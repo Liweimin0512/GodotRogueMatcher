@@ -38,3 +38,6 @@ func highlight() -> void:
 ## 取消高亮
 func unhighlight() -> void:
 	$ColorRect.color = default_bg_color
+
+func _to_string() -> String:
+	return name + ":" + str(self.coordinate)

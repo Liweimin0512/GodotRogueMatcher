@@ -1,6 +1,8 @@
 extends Node2D
 class_name Board
 
+@onready var label: Label = $"../Control/MarginContainer/Label"
+
 var s_cell: PackedScene = preload("res://src/entities/cell.tscn")
 var s_piece: PackedScene = preload("res://src/entities/chess_piece.tscn")
 var rows : int = 9
@@ -20,6 +22,13 @@ var selected_piece : ChessPiece = null :
 
 ## 用来寻路的A星寻路算法的实现
 var a_star : AStarGrid2D = AStarGrid2D.new()
+
+var can_selected: bool = true
+var score : int = 0 :
+	set(value):
+		label.text = "分数：" + str(value)
+		print("分数改变，改变前：", score,"改变后：", value)
+		score = value
 
 func _ready() -> void:
 	initialize_board()
@@ -85,6 +94,8 @@ func has_piece(coordinate: Vector2i) -> bool:
 
 ## 网格点击事件处理函数
 func _on_cell_pressed(cell: Cell) -> void:
+	if not can_selected:
+		return
 #	print("网格被点击：", cell)
 	# 判断点击网格是否有棋子？
 	# 有:将其存为选中棋子
@@ -93,13 +104,17 @@ func _on_cell_pressed(cell: Cell) -> void:
 	# 没有: 判断当前是否选中了棋子？
 	elif selected_piece != null:
 		# 有：执行移动逻辑
-		move_selected_piece(cell)
+		var can_move = await move_selected_piece(cell)
+		if can_move:
+			check_for_elimination(cell)
+			spawn_random_pieces()
 	else:
 		# 没有：无操作
 		pass
 
 ## 移动棋子
-func move_selected_piece(target_cell: Cell) -> void:
+func move_selected_piece(target_cell: Cell) -> bool:
+	can_selected = false
 	var selected_cell: Cell = selected_piece.get_parent()
 	# 获取导航路径（坐标点集合）
 	var path : Array = a_star.get_point_path(selected_cell.coordinate, target_cell.coordinate)
@@ -123,3 +138,54 @@ func move_selected_piece(target_cell: Cell) -> void:
 			# 取消高亮显示
 			c.unhighlight()
 	selected_piece = null
+	can_selected = true
+	return not path.is_empty()
+
+# 检查是否有可以消除的棋子
+func check_for_elimination(target_cell: Cell):
+	var to_elimination = check_direction(target_cell, 1, 0)
+	if to_elimination.size() >= 5:
+		eliminate_and_score(to_elimination)
+	to_elimination = check_direction(target_cell, 0, 1)
+	if to_elimination.size() >= 5:
+		eliminate_and_score(to_elimination)
+	to_elimination = check_direction(target_cell, 1, 1)
+	if to_elimination.size() >= 5:
+		eliminate_and_score(to_elimination)
+	to_elimination = check_direction(target_cell, 1, -1)
+	if to_elimination.size() >= 5:
+		eliminate_and_score(to_elimination)
+
+# 检查从给定位置开始的特定方向是否有五个或更多相同的棋子
+func check_direction(start_cell: Cell, delta_row: int, delta_col: int) -> Array:
+	if start_cell.piece == null: return [] # 如果起始位置为空，则直接返回空数组
+	var to_eliminate = [start_cell]  # 待消除的棋子数组
+
+	for direction in [-1, 1]:
+		var local_step = 1  # 用于跟踪在每个方向上走了多少步
+		var can_eliminate = true
+		while can_eliminate:
+			var new_coord = Vector2i(
+				start_cell.coordinate.x + local_step * direction * delta_row,
+				start_cell.coordinate.y + local_step * direction * delta_col
+			)
+			# 检查边界条件
+			if new_coord.x < 0 or new_coord.x >= self.rows or new_coord.y < 0 or new_coord.y >= self.cols:
+				break
+			var new_cell : Cell = get_cell(new_coord)
+			if new_cell.piece == null:
+				break
+			if new_cell.piece.piece_type == start_cell.piece.piece_type:
+				if not to_eliminate.has(new_cell):
+					to_eliminate.append(new_cell)
+				local_step += 1 # 更新步数
+			else:
+				can_eliminate = false
+	print("当前可消除棋子：", to_eliminate)
+	return to_eliminate
+
+func eliminate_and_score(to_eliminate: Array) -> void:
+	var score_base: int = 10 if to_eliminate.size() <= 5 else (10 + 2 * (to_eliminate.size() - 5))
+	score += score_base * to_eliminate.size()
+	for cell in to_eliminate:
+		cell.piece = null
