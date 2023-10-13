@@ -30,6 +30,8 @@ var score : int = 0 :
 		print("分数改变，改变前：", score,"改变后：", value)
 		score = value
 
+var piece_count: int = 0
+
 func _ready() -> void:
 	initialize_board()
 	spawn_random_pieces()
@@ -55,11 +57,19 @@ func initialize_board() -> void:
 			)
 			self.add_child(cell)
 
+func game_over() -> void:
+	get_tree().paused = true
+	print("游戏结束")
+
 ## 创建随机棋子
 func spawn_random_pieces() -> void:
+	if rows * cols - piece_count <= 3:
+		game_over()
+		return
 	for i in range(3):
 		# 随机网格，判断这个网格为空则生成，否则重新查找网格
 		spawn_piece()
+		piece_count += 1
 	
 ## 在指定位置生成一个随机的棋子
 func spawn_piece() -> void:
@@ -189,3 +199,4 @@ func eliminate_and_score(to_eliminate: Array) -> void:
 	score += score_base * to_eliminate.size()
 	for cell in to_eliminate:
 		cell.piece = null
+	piece_count -= to_eliminate.size()
