@@ -13,11 +13,11 @@ config_version=5
 config/name="Godot Matcher"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://assets/texture/animals/chicken.png"
+config/icon="res://assets/textures/animals/chicken.png"
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [rendering]
 

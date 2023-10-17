@@ -9,7 +9,7 @@ var rows : int = 9
 var cols : int = 9
 
 @export var grid_gap : Vector2 = Vector2(1, 1)
-var cell_size: Vector2 = Vector2(50, 50)
+var cell_size: Vector2 = Vector2(64, 64)
 
 ## 当前选中的棋子，默认为空
 var selected_piece : ChessPiece = null :
@@ -28,9 +28,13 @@ var score : int = 0 :
 	set(value):
 		label.text = "分数：" + str(value)
 		print("分数改变，改变前：", score,"改变后：", value)
+		game_form.update_score_display(value)
 		score = value
 
 var piece_count: int = 0
+var game_form : GameForm
+
+signal game_overed
 
 func _ready() -> void:
 	initialize_board()
@@ -57,9 +61,17 @@ func initialize_board() -> void:
 			)
 			self.add_child(cell)
 
+## 重试
+func retry_game() -> void:
+	for cell in self.get_children():
+		cell.piece = null
+	score = 0
+	spawn_random_pieces()
+
 func game_over() -> void:
-	get_tree().paused = true
-	print("游戏结束")
+#	get_tree().paused = true
+#	print("游戏结束")
+	game_overed.emit()
 
 ## 创建随机棋子
 func spawn_random_pieces() -> void:

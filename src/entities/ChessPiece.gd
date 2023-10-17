@@ -4,11 +4,11 @@ class_name ChessPiece
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 var animals : Array = [
-	preload("res://assets/texture/animals/buffalo.png"), 
-	preload("res://assets/texture/animals/chick.png"), 
-	preload("res://assets/texture/animals/chicken.png"), 
-	preload("res://assets/texture/animals/cow.png"),
-	preload("res://assets/texture/animals/crocodile.png"),
+	preload("res://assets/textures/animals/buffalo.png"), 
+	preload("res://assets/textures/animals/chick.png"), 
+	preload("res://assets/textures/animals/chicken.png"), 
+	preload("res://assets/textures/animals/cow.png"),
+	preload("res://assets/textures/animals/crocodile.png"),
 ]
 
 var piece_type: int = 0 : # -1代表空的网格
