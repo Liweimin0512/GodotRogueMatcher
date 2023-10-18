@@ -1,16 +1,16 @@
 [gd_scene load_steps=13 format=3 uid="uid://dffb830cnc5t1"]
 
-[ext_resource type="Texture2D" uid="uid://di0c62wqxxpxk" path="res://assets/textures/widgets/others/UIbg.png" id="1_1hrin"]
-[ext_resource type="Script" path="res://src/widgets/popup/w_settings_popup.gd" id="1_evtud"]
-[ext_resource type="Texture2D" uid="uid://cl2yee46qr3ib" path="res://assets/textures/widgets/icons/audioOn.png" id="2_x6oxj"]
-[ext_resource type="Texture2D" uid="uid://bbgeydhqey4vx" path="res://assets/textures/widgets/icons/musicOn.png" id="3_alla2"]
-[ext_resource type="Texture2D" uid="uid://bu45n00mh538b" path="res://assets/textures/widgets/letters/letterS.png" id="3_vc17m"]
-[ext_resource type="Texture2D" uid="uid://csf5xxgu6t0fv" path="res://assets/textures/widgets/letters/letterE.png" id="4_2c7y7"]
-[ext_resource type="Texture2D" uid="uid://cf4urcy4ejis2" path="res://assets/textures/widgets/others/yellow_button00.png" id="5_bhjsp"]
-[ext_resource type="Texture2D" uid="uid://bq8acldburxay" path="res://assets/textures/widgets/letters/letterT.png" id="5_hjo3u"]
-[ext_resource type="Texture2D" uid="uid://dvp0plc638c1i" path="res://assets/textures/widgets/letters/letterI.png" id="6_flcdf"]
-[ext_resource type="Texture2D" uid="uid://ntkwuab7qwvb" path="res://assets/textures/widgets/letters/letterN.png" id="7_jlgtr"]
-[ext_resource type="Texture2D" uid="uid://vjyjngb1ybto" path="res://assets/textures/widgets/letters/letterG.png" id="8_lr3gy"]
+[ext_resource type="Script" path="res://src/widgets/popup_settings.gd" id="1_wgiyn"]
+[ext_resource type="Texture2D" uid="uid://di0c62wqxxpxk" path="res://assets/textures/widgets/others/UIbg.png" id="2_gfiya"]
+[ext_resource type="Texture2D" uid="uid://bu45n00mh538b" path="res://assets/textures/widgets/letters/letterS.png" id="3_5to3y"]
+[ext_resource type="Texture2D" uid="uid://csf5xxgu6t0fv" path="res://assets/textures/widgets/letters/letterE.png" id="4_h1br4"]
+[ext_resource type="Texture2D" uid="uid://bq8acldburxay" path="res://assets/textures/widgets/letters/letterT.png" id="5_qp5ts"]
+[ext_resource type="Texture2D" uid="uid://dvp0plc638c1i" path="res://assets/textures/widgets/letters/letterI.png" id="6_5rofp"]
+[ext_resource type="Texture2D" uid="uid://ntkwuab7qwvb" path="res://assets/textures/widgets/letters/letterN.png" id="7_d7jab"]
+[ext_resource type="Texture2D" uid="uid://vjyjngb1ybto" path="res://assets/textures/widgets/letters/letterG.png" id="8_r6t6p"]
+[ext_resource type="Texture2D" uid="uid://cl2yee46qr3ib" path="res://assets/textures/widgets/icons/audioOn.png" id="9_smdwe"]
+[ext_resource type="Texture2D" uid="uid://bbgeydhqey4vx" path="res://assets/textures/widgets/icons/musicOn.png" id="10_1geq7"]
+[ext_resource type="Texture2D" uid="uid://cf4urcy4ejis2" path="res://assets/textures/widgets/others/yellow_button00.png" id="11_w5jsj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6edti"]
 outline_size = 5
@@ -28,11 +28,11 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_evtud")
+script = ExtResource("1_wgiyn")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_1hrin")
+texture = ExtResource("2_gfiya")
 expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -58,49 +58,49 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_vc17m")
+texture = ExtResource("3_5to3y")
 expand_mode = 3
 stretch_mode = 5
 
 [node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("4_2c7y7")
+texture = ExtResource("4_h1br4")
 expand_mode = 3
 stretch_mode = 5
 
 [node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_hjo3u")
+texture = ExtResource("5_qp5ts")
 expand_mode = 3
 stretch_mode = 5
 
 [node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_hjo3u")
+texture = ExtResource("5_qp5ts")
 expand_mode = 3
 stretch_mode = 5
 
 [node name="TextureRect5" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("6_flcdf")
+texture = ExtResource("6_5rofp")
 expand_mode = 3
 stretch_mode = 5
 
 [node name="TextureRect6" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("7_jlgtr")
+texture = ExtResource("7_d7jab")
 expand_mode = 3
 stretch_mode = 5
 
 [node name="TextureRect7" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("8_lr3gy")
+texture = ExtResource("8_r6t6p")
 expand_mode = 3
 stretch_mode = 5
 
 [node name="TextureRect8" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_vc17m")
+texture = ExtResource("3_5to3y")
 expand_mode = 3
 stretch_mode = 5
 
@@ -116,7 +116,7 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture_normal = ExtResource("2_x6oxj")
+texture_normal = ExtResource("9_smdwe")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -141,7 +141,7 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture_normal = ExtResource("3_alla2")
+texture_normal = ExtResource("10_1geq7")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -163,7 +163,7 @@ custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("5_bhjsp")
+texture_normal = ExtResource("11_w5jsj")
 ignore_texture_size = true
 stretch_mode = 0
 

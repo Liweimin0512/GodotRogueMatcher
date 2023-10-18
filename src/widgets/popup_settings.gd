@@ -1,4 +1,4 @@
-extends PopupInterface
+extends UIPopup
 
 @onready var btn_audio: TextureButton = %btn_audio
 @onready var slider_audio: HSlider = %slider_audio

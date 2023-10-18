@@ -1,4 +1,4 @@
-extends Interface
+extends UIForm
 class_name GameForm
 
 @onready var score_container: HBoxContainer = %ScoreContainer
@@ -15,8 +15,6 @@ var number_textures = [
 	preload("res://assets/textures/widgets/numbers/number8.png"), 
 	preload("res://assets/textures/widgets/numbers/number9.png")
 ]
-
-signal w_name_imput_popup_confirm(player_name: String)
 
 ## 更新分数显示 
 func update_score_display(current_score: int) -> void:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bj6vqwa0jekhb"]
 
-[ext_resource type="Script" path="res://src/widgets/form/game_form.gd" id="1_ejfdn"]
-[ext_resource type="Texture2D" uid="uid://hurvio67va1p" path="res://assets/textures/widgets/numbers/number0.png" id="2_224ie"]
+[ext_resource type="Script" path="res://src/widgets/game_form.gd" id="1_x4o87"]
+[ext_resource type="Texture2D" uid="uid://hurvio67va1p" path="res://assets/textures/widgets/numbers/number0.png" id="2_yks0h"]
 
 [node name="GameForm" type="Control"]
 process_mode = 3
@@ -12,7 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("1_ejfdn")
+script = ExtResource("1_x4o87")
 
 [node name="ScoreContainer" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -29,4 +29,4 @@ scale = Vector2(0.3, 0.3)
 
 [node name="TextureRect" type="TextureRect" parent="ScoreContainer"]
 layout_mode = 2
-texture = ExtResource("2_224ie")
+texture = ExtResource("2_yks0h")

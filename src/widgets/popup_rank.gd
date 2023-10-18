@@ -1,4 +1,4 @@
-extends PopupInterface
+extends UIPopup
 
 @onready var btn_confirm: TextureButton = %btn_confirm
 @onready var rank_container: VBoxContainer = %RankContainer

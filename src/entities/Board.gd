@@ -66,11 +66,11 @@ func retry_game() -> void:
 	for cell in self.get_children():
 		cell.piece = null
 	score = 0
+	piece_count = 0
 	spawn_random_pieces()
+	get_tree().paused = false
 
 func game_over() -> void:
-#	get_tree().paused = true
-#	print("游戏结束")
 	game_overed.emit()
 
 ## 创建随机棋子
@@ -94,7 +94,7 @@ func spawn_piece() -> void:
 	var piece: ChessPiece = s_piece.instantiate()
 	cell.piece = piece
 	piece.piece_type = randi_range(0, 4)
-	print("生成棋子：", piece.piece_type," 在位置：",coordinate)
+	print("生成棋子：", piece.piece_type," 在位置：", coordinate)
 
 ## 根据坐标获取网格
 func get_cell(coordinate: Vector2i) -> Cell:
@@ -206,6 +206,7 @@ func check_direction(start_cell: Cell, delta_row: int, delta_col: int) -> Array:
 	print("当前可消除棋子：", to_eliminate)
 	return to_eliminate
 
+## 消除并得分
 func eliminate_and_score(to_eliminate: Array) -> void:
 	var score_base: int = 10 if to_eliminate.size() <= 5 else (10 + 2 * (to_eliminate.size() - 5))
 	score += score_base * to_eliminate.size()

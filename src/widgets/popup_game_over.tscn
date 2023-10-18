@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://brrkrgranf75c"]
 
-[ext_resource type="Script" path="res://src/widgets/popup/w_game_over_popup.gd" id="1_thsgm"]
-[ext_resource type="Texture2D" uid="uid://di0c62wqxxpxk" path="res://assets/textures/widgets/others/UIbg.png" id="2_pe622"]
-[ext_resource type="Texture2D" uid="uid://d4j0h4k5bw6va" path="res://assets/textures/widgets/others/textGameOver.png" id="3_k0q3q"]
-[ext_resource type="Texture2D" uid="uid://cf4urcy4ejis2" path="res://assets/textures/widgets/others/yellow_button00.png" id="4_dc0u6"]
+[ext_resource type="Script" path="res://src/widgets/popup_game_over.gd" id="1_a0l8r"]
+[ext_resource type="Texture2D" uid="uid://di0c62wqxxpxk" path="res://assets/textures/widgets/others/UIbg.png" id="2_kalvf"]
+[ext_resource type="Texture2D" uid="uid://d4j0h4k5bw6va" path="res://assets/textures/widgets/others/textGameOver.png" id="3_r8amh"]
+[ext_resource type="Texture2D" uid="uid://cf4urcy4ejis2" path="res://assets/textures/widgets/others/yellow_button00.png" id="4_lbxqn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c0o5y"]
 outline_size = 5
@@ -21,12 +21,12 @@ offset_right = 110.0
 offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_thsgm")
+script = ExtResource("1_a0l8r")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(220, 130)
 layout_mode = 2
-texture = ExtResource("2_pe622")
+texture = ExtResource("2_kalvf")
 expand_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -45,7 +45,7 @@ custom_minimum_size = Vector2(160, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-texture = ExtResource("3_k0q3q")
+texture = ExtResource("3_r8amh")
 expand_mode = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -59,7 +59,7 @@ custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-texture_normal = ExtResource("4_dc0u6")
+texture_normal = ExtResource("4_lbxqn")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_group_ = true
@@ -82,7 +82,7 @@ custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-texture_normal = ExtResource("4_dc0u6")
+texture_normal = ExtResource("4_lbxqn")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_group_ = true
