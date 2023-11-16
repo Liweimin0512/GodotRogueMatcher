@@ -52,3 +52,5 @@ script = ExtResource("2_ck47c")
 [node name="UIManager" type="CanvasLayer" parent="."]
 process_mode = 3
 script = ExtResource("3_w6lc5")
+
+[node name="Area2D" type="Area2D" parent="."]

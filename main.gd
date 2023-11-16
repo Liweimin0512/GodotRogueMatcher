@@ -3,6 +3,8 @@ extends Node2D
 @onready var ui_manager: UIManager = $UIManager
 @onready var board: Board = $Board
 
+var score := 100
+
 func _ready() -> void:
 	ui_manager.subscribe("popup_game_over_quit_game", 
 		func() -> void:

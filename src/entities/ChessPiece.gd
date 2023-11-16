@@ -20,7 +20,7 @@ var tween : Tween = null
 
 ## 选择动画效果
 func selected() -> void:
-	print("selected:", self)
+#	print("selected:", self)
 	tween = create_tween()
 	tween.set_loops()
 	tween.tween_property(self, 'scale', Vector2(0.5, 0.5), 0.2)
@@ -28,7 +28,7 @@ func selected() -> void:
 
 ## 取消选择动画效果
 func deselected() -> void:
-	print("deselected:", self)
+#	print("deselected:", self)
 	if tween:
 		tween.kill()
 	tween = create_tween()

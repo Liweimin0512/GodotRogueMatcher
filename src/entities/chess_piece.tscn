@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dij52hrxv40e8"]
+[gd_scene load_steps=3 format=3 uid="uid://dij52hrxv40e8"]
 
 [ext_resource type="Script" path="res://src/entities/ChessPiece.gd" id="1_5vn5g"]
 [ext_resource type="Texture2D" uid="uid://b5jev3xbk355m" path="res://assets/textures/animals/bear.png" id="2_rpaye"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2a54n"]
-graph_offset = Vector2(-435.411, 69.9014)
 
 [node name="ChessPiece" type="Node2D"]
 script = ExtResource("1_5vn5g")
@@ -13,8 +10,3 @@ script = ExtResource("1_5vn5g")
 position = Vector2(-3.8147e-06, 1.90735e-06)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_rpaye")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeBlendTree_2a54n")

@@ -5,8 +5,8 @@ class_name Board
 
 var s_cell: PackedScene = preload("res://src/entities/cell.tscn")
 var s_piece: PackedScene = preload("res://src/entities/chess_piece.tscn")
-var rows : int = 9
-var cols : int = 9
+@export var rows : int = 9
+@export var cols : int = 9
 
 @export var grid_gap : Vector2 = Vector2(1, 1)
 var cell_size: Vector2 = Vector2(64, 64)
@@ -87,14 +87,14 @@ func spawn_random_pieces() -> void:
 func spawn_piece() -> void:
 	var coordinate : Vector2i = Vector2i(randi_range(0, rows-1), randi_range(0, cols-1))
 	if has_piece(coordinate):
-		print("目标位置：", coordinate," 存在棋子，重新随机位置")
+#		print("目标位置：", coordinate," 存在棋子，重新随机位置")
 		return spawn_piece()
 	# 找到对应坐标位置的网格Grid
 	var cell : Cell = get_cell(coordinate)
 	var piece: ChessPiece = s_piece.instantiate()
 	cell.piece = piece
 	piece.piece_type = randi_range(0, 4)
-	print("生成棋子：", piece.piece_type," 在位置：", coordinate)
+#	print("生成棋子：", piece.piece_type," 在位置：", coordinate)
 
 ## 根据坐标获取网格
 func get_cell(coordinate: Vector2i) -> Cell:
@@ -118,7 +118,6 @@ func has_piece(coordinate: Vector2i) -> bool:
 func _on_cell_pressed(cell: Cell) -> void:
 	if not can_selected:
 		return
-#	print("网格被点击：", cell)
 	# 判断点击网格是否有棋子？
 	# 有:将其存为选中棋子
 	if cell.piece != null:		
@@ -165,18 +164,23 @@ func move_selected_piece(target_cell: Cell) -> bool:
 
 # 检查是否有可以消除的棋子
 func check_for_elimination(target_cell: Cell):
+	var to_eli := []
 	var to_elimination = check_direction(target_cell, 1, 0)
 	if to_elimination.size() >= 5:
-		eliminate_and_score(to_elimination)
+#		eliminate_and_score(to_elimination)
+		to_eli += to_elimination
 	to_elimination = check_direction(target_cell, 0, 1)
 	if to_elimination.size() >= 5:
-		eliminate_and_score(to_elimination)
+#		eliminate_and_score(to_elimination)
+		to_eli += to_elimination
 	to_elimination = check_direction(target_cell, 1, 1)
 	if to_elimination.size() >= 5:
-		eliminate_and_score(to_elimination)
+#		eliminate_and_score(to_elimination)
+		to_eli += to_elimination
 	to_elimination = check_direction(target_cell, 1, -1)
 	if to_elimination.size() >= 5:
-		eliminate_and_score(to_elimination)
+		to_eli += to_elimination
+	eliminate_and_score(to_eli)
 
 # 检查从给定位置开始的特定方向是否有五个或更多相同的棋子
 func check_direction(start_cell: Cell, delta_row: int, delta_col: int) -> Array:

@@ -2,12 +2,12 @@ extends Node2D
 class_name Cell
 
 
-## 网格坐标
+## 网格坐标（在棋盘当中的坐标）
 var coordinate: Vector2i = Vector2i.ZERO
 ## 默认背景色
-var default_bg_color : Color = Color.html("#313131")
+@export var default_bg_color : Color = Color.html("#313131")
 ## 高亮背景色
-var highlight_bg_color : Color = Color.DARK_GRAY
+@export var highlight_bg_color : Color = Color.DARK_GRAY
 
 ## 当前网格包含的棋子
 var piece: ChessPiece = null: 
